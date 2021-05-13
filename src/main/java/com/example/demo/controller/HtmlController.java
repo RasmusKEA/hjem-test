@@ -20,4 +20,9 @@ public class HtmlController {
         return "contact";
     }
 
+    @GetMapping("/webshop")
+    public String getWebshop(){
+        return "webshop";
+    }
+
 }
