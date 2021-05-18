@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class RestController {
     private final EmployeeRepository employeeRepository;
     private final AuthorityRepository authorityRepository;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
 
-    public RestController(EmployeeRepository employeeRepository, AuthorityRepository authorityRepository){
+    public RestController(EmployeeRepository employeeRepository, AuthorityRepository authorityRepository, PasswordEncoder passwordEncoder){
+        this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.employeeRepository = employeeRepository;
     }

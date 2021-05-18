@@ -21,9 +21,8 @@ function createAccount() {
     let password2 = document.getElementById("password2");
 
     let newEmployee = {
-
         "username" : `${username.value}`,
-        "password" : `${password.value}`
+        "password" : `${password.value}`,
     };
 
     let body = JSON.stringify(newEmployee);
@@ -35,7 +34,8 @@ function createAccount() {
             'Content-Type': 'application/json',
         },
         method: "POST",
-        body: body
+        body: body,
+        credentials: "include"
     };
 
     if (password.value === password2.value){
