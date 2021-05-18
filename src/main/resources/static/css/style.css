@@ -1,6 +1,26 @@
-.navbarheight{
+.button-div{
     margin-top: 105px;
 }
+
+.admin-content{
+    width: 600px;
+    height: 600px;
+    border: 1px solid black;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.createAccount{
+    width: 300px !important;
+}
+
 
 .container{
     margin: auto;
@@ -22,11 +42,45 @@
     background-color: #3e65da;
     height: 300px;
     width: 200px;
+
 }
 .featured-item:hover{
     cursor: pointer;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
+}
+
+.textOnInput {
+    position: relative;
+    margin-bottom: 10px;
+    width: 300px !important;
+}
+.textOnInput label {
+    position: absolute;
+    top: -15px;
+    left: 23px;
+    padding: 2px;
+    z-index: 1;
+}
+.textOnInput label:after {
+    content: " ";
+    background-color: #fff;
+    width: 100%;
+    height: 13px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+label {
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+.form-control {
+    box-shadow: none !important;
+
 }
 

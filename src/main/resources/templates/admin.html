@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="css/bootstrap.css" rel="stylesheet"/>
     <link href="css/navbar.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
     <meta charset="UTF-8">
@@ -8,7 +10,7 @@
 </head>
 <nav>
     <input id="nav-toggle" type="checkbox">
-    <a class="logo" href="/"><strong>HJEM</strong> </a>
+    <a class="logo" href="/"><strong>HJEM</strong> <i>ADMIN</i> </a>
     <ul class="links">
         <li><a href="/">Forside</a></li>
         <li><a href="/webshop">Webshop</a></li>
@@ -23,5 +25,43 @@
 </nav>
 <body>
 
+<div class="button-div">
+    <button class="btn btn-primary adminBtn" id="accoutnBtn"  onclick="account()">Tilføj konto</button>
+    <button class="btn btn-primary adminBtn" id="featuredBtn" onclick="featured()">Tilføj featured item</button>
+    <button class="btn btn-primary adminBtn" id="animationBtn" onclick="animation()">Tilføj animation</button>
+</div>
+
+<div class="admin-content">
+    <div class="accountForm" id="formthing">
+        <div class="textOnInput">
+            <label>Navn</label>
+            <input class="form-control" type="text">
+        </div>
+
+        <div class="textOnInput">
+            <label >Email</label>
+            <input class="form-control" type="text">
+        </div>
+
+        <div class="textOnInput">
+            <label >Kodeord</label>
+            <input class="form-control" type="text">
+        </div>
+
+        <div class="textOnInput">
+            <label>Gentag kodeord</label>
+            <input class="form-control" type="text">
+        </div>
+        <button class="btn btn-primary createAccount">Opret konto</button>
+    </div>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="js/dropdown.js"></script>
 </body>
 </html>
