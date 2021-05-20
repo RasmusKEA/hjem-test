@@ -1,15 +1,23 @@
 function account(){
     const targetDiv = document.getElementById("formthing")
+    const featured = document.getElementById("featured")
+    featured.style.display = "none";
     targetDiv.style.display = "block";
+
 }
 
 function animation(){
     const targetDiv = document.getElementById("formthing")
+    const featured = document.getElementById("featured")
+    featured.style.display = "none";
     targetDiv.style.display = "none";
 }
 
 function featured(){
-    console.log("featured item")
+    const targetDiv = document.getElementById("formthing")
+    const featured = document.getElementById("featured")
+    featured.style.display = "block";
+    targetDiv.style.display = "none";
 }
 
 
