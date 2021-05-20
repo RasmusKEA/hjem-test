@@ -56,6 +56,32 @@ function createAccount() {
         });
 
     }
+}
+
+    document.getElementById("submitBtn").addEventListener('click', upload);
+
+
+function upload(ev){
+    ev.preventDefault();
+
+    let h = new Headers();
+    h.append('Accept', 'application/json');
+
+    let fd = new FormData();
+    let myFile = document.getElementById("featured_img").files[0];
+    fd.append('featured_img', myFile);
+
+    let req = new Request('http://localhost:8080/uploadFile', {
+        method: 'POST',
+        headers: h,
+        mode: 'no-cors',
+        body: fd
+    })
+
+    fetch(req)
+        .catch((error) => {
+        console.log("error", error)
+    })
 
 }
 
