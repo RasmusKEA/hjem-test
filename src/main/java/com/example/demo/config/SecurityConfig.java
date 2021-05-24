@@ -29,7 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/icon/**", "/images/**", "/createEmployee", "/uploadImage", "/uploadFile");
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/icon/**", "/images/**", "/createEmployee", "/uploadImage", "/uploadFile"
+                , "/downloadFile/**", "/download/**");
     }
 
     @Override
@@ -44,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webshop")
                 .permitAll()
                 .antMatchers("/admin")
-                .hasRole("ADMIN")
+                .hasAnyRole("ADMIN", "USER")
                 .and()
                 .authorizeRequests()
                 .anyRequest()

@@ -14,7 +14,7 @@ public class DBFileStorageService {
     @Autowired
     private DBFileRepository dbFileRepository;
 
-    public DBFile storeFile(MultipartFile file) throws Exception {
+    public DBFile storeFile(MultipartFile file, String featNumber) throws Exception {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -24,7 +24,7 @@ public class DBFileStorageService {
                 throw new IOException("Sorry! Filename contains invalid path sequence " + fileName);
             }
 
-            DBFile dbFile = new DBFile(fileName, file.getContentType(), file.getBytes());
+            DBFile dbFile = new DBFile(fileName, file.getContentType(), file.getBytes(), featNumber);
 
             return dbFileRepository.save(dbFile);
         } catch (IOException ex) {
@@ -32,8 +32,7 @@ public class DBFileStorageService {
         }
     }
 
-    public DBFile getFile(String fileId) throws Exception {
-        return dbFileRepository.findById(fileId)
-                .orElseThrow(() -> new Exception("File not found with id " + fileId));
+    public DBFile getFile(String featNumber) throws Exception {
+        return dbFileRepository.findByFeaturedID(featNumber);
     }
 }

@@ -23,15 +23,8 @@ public class InitUsers implements CommandLineRunner {
 
     private void loadSecurityData() {
         Authority admin = authorityRepository.save(Authority.builder().role("ROLE_ADMIN").build());
-        Authority user = authorityRepository.save(Authority.builder().role("ROLE_USER").build());
-        Authority customer = authorityRepository.save(Authority.builder().role("ROLE_CUSTOMER").build());
 
         employeeRepository.save(Employee.builder().username("emil").password(passwordEncoder.encode("helholm")).authority(admin).build());
-
-        employeeRepository.save(Employee.builder().username("jeppe").password(passwordEncoder.encode("helholm")).authority(user).build());
-
-        employeeRepository.save(Employee.builder().username("mikkel").password(passwordEncoder.encode("helholm")).authority(customer).build());
-
 
     }
 }

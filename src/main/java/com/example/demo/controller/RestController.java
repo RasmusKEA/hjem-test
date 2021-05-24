@@ -6,6 +6,7 @@ import com.example.demo.model.Employee;
 import com.example.demo.model.Item;
 import com.example.demo.payload.UploadFileResponse;
 import com.example.demo.repository.AuthorityRepository;
+import com.example.demo.repository.DBFileRepository;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.service.DBFileStorageService;
 import org.slf4j.Logger;
@@ -32,36 +33,24 @@ public class RestController {
     private final AuthorityRepository authorityRepository;
     private final PasswordEncoder passwordEncoder;
     private final DBFileStorageService dbFileStorageService;
+    private final DBFileRepository dbFileRepository;
 
 
-    public RestController(EmployeeRepository employeeRepository, AuthorityRepository authorityRepository, PasswordEncoder passwordEncoder, DBFileStorageService dbFileStorageService){
+    public RestController(EmployeeRepository employeeRepository, AuthorityRepository authorityRepository, PasswordEncoder passwordEncoder, DBFileStorageService dbFileStorageService, DBFileRepository dbFileRepository){
         this.dbFileStorageService = dbFileStorageService;
+        this.dbFileRepository = dbFileRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.employeeRepository = employeeRepository;
     }
 
 
-
-
-
     @PostMapping(value = "/createEmployee", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Employee createEmployee(@RequestBody Employee employee){
-        Authority admin = authorityRepository.save(Authority.builder().role("ROLE_ADMIN").build());
         Authority user = authorityRepository.save(Authority.builder().role("ROLE_USER").build());
-        Authority customer = authorityRepository.save(Authority.builder().role("ROLE_CUSTOMER").build());
-
         return employeeRepository.save(Employee.builder().username(employee.getUsername()).password(passwordEncoder.encode(employee.getPassword())).authority(user).build());
 
-    }
-
-    @PostMapping(value = "/uploadImage")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Item createItem(@RequestBody MultipartFile[] featured_img){
-        System.out.println(Arrays.toString(featured_img));
-        System.out.println(featured_img.length);
-        return null;
     }
 
     private static final Logger logger = LoggerFactory.getLogger(RestController.class);
@@ -69,31 +58,16 @@ public class RestController {
 
 
     @PostMapping("/uploadFile")
-    public UploadFileResponse uploadFile(@RequestParam("featured_img") MultipartFile file) throws Exception {
-        DBFile dbFile = dbFileStorageService.storeFile(file);
+    public UploadFileResponse uploadFile(@RequestParam("featured_img") MultipartFile file, @RequestParam("featNumber") String featNumber) throws Exception {
+        DBFile dbFile = dbFileStorageService.storeFile(file, featNumber);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
-                .path(dbFile.getId())
+                .path(dbFile.getFeaturedID())
                 .toUriString();
 
         return new UploadFileResponse(dbFile.getFileName(), fileDownloadUri,
-                file.getContentType(), file.getSize());
-    }
-
-    @PostMapping("/uploadMultipleFiles")
-    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
-        return Arrays.asList(files)
-                .stream()
-                .map(file -> {
-                    try {
-                        return uploadFile(file);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    return null;
-                })
-                .collect(Collectors.toList());
+                file.getContentType(), file.getSize(), Integer.parseInt(featNumber));
     }
 
     @GetMapping("/downloadFile/{fileId}")
@@ -106,6 +80,7 @@ public class RestController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dbFile.getFileName() + "\"")
                 .body(new ByteArrayResource(dbFile.getData()));
     }
+
 
 }
 

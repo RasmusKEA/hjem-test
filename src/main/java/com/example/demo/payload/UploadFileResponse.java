@@ -5,12 +5,22 @@ public class UploadFileResponse {
     private String fileDownloadUri;
     private String fileType;
     private long size;
+    private int featNumber;
 
-    public UploadFileResponse(String fileName, String fileDownloadUri, String fileType, long size) {
+    public UploadFileResponse(String fileName, String fileDownloadUri, String fileType, long size, int featNumber) {
         this.fileName = fileName;
         this.fileDownloadUri = fileDownloadUri;
         this.fileType = fileType;
         this.size = size;
+        this.featNumber = featNumber;
+    }
+
+    public int getFeatNumber() {
+        return featNumber;
+    }
+
+    public void setFeatNumber(int featNumber) {
+        this.featNumber = featNumber;
     }
 
     public String getFileName() {

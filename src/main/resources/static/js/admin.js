@@ -1,23 +1,23 @@
-function account(){
-    const targetDiv = document.getElementById("formthing")
-    const featured = document.getElementById("featured")
-    featured.style.display = "none";
-    targetDiv.style.display = "block";
+const accountBtn = document.getElementById("formthing")
+const featuredBtn = document.getElementById("featured")
+//const animationBtn = document.getElementById("animation")
 
+document.getElementById("formthing").style.display = "block"
+document.getElementById("featured").style.display = "none"
+
+function account(){
+    featuredBtn.style.display = "none";
+    accountBtn.style.display = "block";
 }
 
 function animation(){
-    const targetDiv = document.getElementById("formthing")
-    const featured = document.getElementById("featured")
-    featured.style.display = "none";
-    targetDiv.style.display = "none";
+    featuredBtn.style.display = "none";
+    accountBtn.style.display = "none";
 }
 
 function featured(){
-    const targetDiv = document.getElementById("formthing")
-    const featured = document.getElementById("featured")
-    featured.style.display = "block";
-    targetDiv.style.display = "none";
+    featuredBtn.style.display = "block";
+    accountBtn.style.display = "none";
 }
 
 
@@ -58,18 +58,23 @@ function createAccount() {
     }
 }
 
-    document.getElementById("submitBtn").addEventListener('click', upload);
 
 
-function upload(ev){
-    ev.preventDefault();
+
+function upload(){
+  // ev.preventDefault();
 
     let h = new Headers();
     h.append('Accept', 'application/json');
 
     let fd = new FormData();
     let myFile = document.getElementById("featured_img").files[0];
+    let featElem = document.getElementById("featNumber");
+    let featNumber = featElem.value;
+    fd.append('featNumber', featNumber);
     fd.append('featured_img', myFile);
+
+
 
     let req = new Request('http://localhost:8080/uploadFile', {
         method: 'POST',
@@ -82,6 +87,7 @@ function upload(ev){
         .catch((error) => {
         console.log("error", error)
     })
+
 
 }
 

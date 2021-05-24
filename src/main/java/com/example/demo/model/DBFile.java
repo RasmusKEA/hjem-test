@@ -12,6 +12,8 @@ public class DBFile {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
+    private String featuredID;
+
     private String fileName;
 
     private String fileType;
@@ -23,10 +25,24 @@ public class DBFile {
 
     }
 
+    public DBFile(String fileName, String fileType, byte[] data, String featuredID) {
+        this.featuredID = featuredID;
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.data = data;
+    }
     public DBFile(String fileName, String fileType, byte[] data) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
+    }
+
+    public String getFeaturedID() {
+        return featuredID;
+    }
+
+    public void setFeaturedID(String featuredID) {
+        this.featuredID = featuredID;
     }
 
     public String getId() {
