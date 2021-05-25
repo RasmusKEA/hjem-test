@@ -59,12 +59,19 @@ public class RestController {
 
     @PostMapping("/uploadFile")
     public UploadFileResponse uploadFile(@RequestParam("featured_img") MultipartFile file, @RequestParam("featNumber") String featNumber) throws Exception {
+
         DBFile dbFile = dbFileStorageService.storeFile(file, featNumber);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
                 .path(dbFile.getFeaturedID())
                 .toUriString();
+
+        DBFile file1 = dbFileRepository.findByFeaturedID(featNumber);
+        System.out.println(file1.getId());
+
+
+        System.out.println(fileDownloadUri);
 
         return new UploadFileResponse(dbFile.getFileName(), fileDownloadUri,
                 file.getContentType(), file.getSize(), Integer.parseInt(featNumber));
@@ -75,10 +82,20 @@ public class RestController {
         // Load file from database
         DBFile dbFile = dbFileStorageService.getFile(fileId);
 
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(dbFile.getFileType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dbFile.getFileName() + "\"")
-                .body(new ByteArrayResource(dbFile.getData()));
+        try{
+            return ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType(dbFile.getFileType()))
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dbFile.getFileName() + "\"")
+                    .body(new ByteArrayResource(dbFile.getData()));
+        }catch (Exception e){
+            throw new NullPointerException(e.getMessage() + " file does not exist yet");
+        }
+    }
+
+    @GetMapping("/findAllImages")
+    public List<DBFile> findAllImages(){
+        List<DBFile> files = dbFileRepository.findAll();
+        return files;
     }
 
 

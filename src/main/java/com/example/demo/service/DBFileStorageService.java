@@ -26,7 +26,17 @@ public class DBFileStorageService {
 
             DBFile dbFile = new DBFile(fileName, file.getContentType(), file.getBytes(), featNumber);
 
+            try{
+                DBFile featExists = dbFileRepository.findByFeaturedID(featNumber);
+                if(featExists != null){
+                    dbFileRepository.deleteById(featExists.getId());
+                }
+
+            }catch (Exception e){
+                throw new NullPointerException("File does not exist");
+            }
             return dbFileRepository.save(dbFile);
+
         } catch (IOException ex) {
             throw new IOException("Could not store file " + fileName + ". Please try again!", ex);
         }
