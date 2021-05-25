@@ -14,16 +14,25 @@ fetchAllImages();
 
 function loadImages(images){
     images.forEach(image =>{
-        
-        const featDiv = document.getElementById('featContainer');
-        const singleFeatDiv = document.createElement('div')
-        const imgTag = document.createElement('IMG');
-        singleFeatDiv.className = 'featured-item';
-        imgTag.setAttribute('src', 'http://localhost:8080/downloadFile/' + `${image.featuredID}`);
-        imgTag.style.width = '200px';
-        imgTag.style.height = '300px';
-        singleFeatDiv.append(imgTag);
-        featDiv.append(singleFeatDiv);
+        if (image.featuredID !== '5'){
+            const featDiv = document.getElementById('featContainer');
+            const singleFeatDiv = document.createElement('div')
+            const imgTag = document.createElement('IMG');
+            singleFeatDiv.className = 'featured-item';
+            imgTag.setAttribute('src', 'http://localhost:8080/downloadFile/' + `${image.featuredID}`);
+            imgTag.style.width = '200px';
+            imgTag.style.height = '300px';
+            singleFeatDiv.append(imgTag);
+            featDiv.append(singleFeatDiv);
+        }else {
+            const animationContainer = document.getElementById('animationContainer');
+            const animationDiv = document.createElement('div');
+            const animation = document.createElement('IMG');
+            animationDiv.className = 'animationDiv';
+            animation.setAttribute('src', 'http://localhost:8080/downloadFile/5');
+            animationDiv.append(animation);
+            animationContainer.append(animationDiv);
+        }
     })
 }
 
