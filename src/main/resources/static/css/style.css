@@ -39,10 +39,8 @@
 }
 
 .featured-item{
-    background-color: #3e65da;
     height: 300px;
     width: 200px;
-
 }
 .featured-item:hover{
     cursor: pointer;

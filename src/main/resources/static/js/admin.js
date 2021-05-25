@@ -58,11 +58,15 @@ function createAccount() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', init)
+
+function init(){
+    document.getElementById('submitBtn').addEventListener('click', upload);
+}
 
 
-
-function upload(){
-  // ev.preventDefault();
+function upload(ev){
+   ev.preventDefault();
 
     let h = new Headers();
     h.append('Accept', 'application/json');
@@ -83,10 +87,18 @@ function upload(){
         body: fd
     })
 
-    fetch(req)
-        .catch((error) => {
-        console.log("error", error)
-    })
+
+
+    if(featNumber.includes("Hvilket featured item")){
+        window.alert("Vælg venligst hvilket item du vil erstatte")
+    }else{
+        fetch(req)
+            .catch((error) => {
+                console.log("error", error)
+            })
+    }
+
+
 
 
 }

@@ -14,10 +14,15 @@ fetchAllImages();
 
 function loadImages(images){
     images.forEach(image =>{
-        const featDiv = document.getElementById("feat" + `${image.featuredID}`);
+        const featDiv = document.getElementById('featContainer');
+        const singleFeatDiv = document.createElement('div')
         const imgTag = document.createElement('IMG');
+        singleFeatDiv.className = 'featured-item';
         imgTag.setAttribute('src', 'http://localhost:8080/downloadFile/' + `${image.featuredID}`);
-        featDiv.append(imgTag);
+        imgTag.style.width = '200px';
+        imgTag.style.height = '300px';
+        singleFeatDiv.append(imgTag);
+        featDiv.append(singleFeatDiv);
     })
 }
 

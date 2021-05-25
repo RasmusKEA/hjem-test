@@ -56,17 +56,17 @@
     </div>
 
     <div class="featured" id="featured">
-       <!-- <form> -->
+       <form action="#">
             <div>
-                <input type="file" id="featured_img"/>
+                <input type="file" id="featured_img" required/>
             </div>
 
-            <div class="linkDiv">
+            <div class="linkDiv" >
                 <input style="width: 300px" type="text" placeholder="Indsæt link til item i shoppen..." class="linkInput">
             </div>
 
             <select id="featNumber" class="form-select form-select-sm" style="width: 300px">
-                <option selected disabled>Hvilket featured item vil du erstatte?</option>
+                <option disabled selected>Hvilket featured item vil du erstatte?</option>
                 <option value="1">Featured Item #1</option>
                 <option value="2">Featured Item #2</option>
                 <option value="3">Featured Item #3</option>
@@ -74,10 +74,10 @@
             </select>
 
             <div class="submitDiv">
-                <button id="submitBtn" class="btn btn-primary" onclick="upload()">Upload billede</button>
+                <button id="submitBtn" class="btn btn-primary">Upload billede</button>
             </div>
 
-        <!-- </form> -->
+       </form>
 
 
 
