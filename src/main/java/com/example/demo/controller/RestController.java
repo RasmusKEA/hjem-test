@@ -1,14 +1,12 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Authority;
-import com.example.demo.model.DBFile;
-import com.example.demo.model.Employee;
-import com.example.demo.model.Item;
+import com.example.demo.model.*;
 import com.example.demo.payload.UploadFileResponse;
 import com.example.demo.repository.AuthorityRepository;
 import com.example.demo.repository.DBFileRepository;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.service.DBFileStorageService;
+import com.example.demo.service.MailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +94,14 @@ public class RestController {
     public List<DBFile> findAllImages(){
         List<DBFile> files = dbFileRepository.findAll();
         return files;
+    }
+
+    @PostMapping("/sendMail")
+    public Mail sendMail(@RequestBody Mail mail){
+        System.out.println(mail);
+        MailService email = new MailService();
+        email.sendMail(mail.getMail());
+        return null;
     }
 
 

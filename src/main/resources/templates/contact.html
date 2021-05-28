@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <link href="css/navbar.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
@@ -23,6 +23,24 @@
 </nav>
 <body>
 
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <input type="text" id="name" name="name" placeholder="Indtast navn.." required>
+
+            <input type="text" id="addr" name="addr" placeholder="Indtast adresse.." required>
+
+            <input type="text" id="tlfnr" name="tlfnr" placeholder="Indtast telefonnummer.." required>
+
+            <input type="email" id="email" name="email" placeholder="Indtast email.." required>
+
+            <textarea id="text" name="text" placeholder="Spørg os om noget" style="height:225px"></textarea>
+            <button value="Send" onclick="sendMail()">send</button>
+
+        </div>
+    </div>
+</div>
 
 </body>
+<script src="js/contact.js"></script>
 </html>
