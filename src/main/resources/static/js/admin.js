@@ -22,7 +22,7 @@ function featured(){
 
 
 
-function createAccount() {
+function createEmployee() {
     let name = document.getElementById("name");
     let username = document.getElementById("email");
     let password = document.getElementById("password");
