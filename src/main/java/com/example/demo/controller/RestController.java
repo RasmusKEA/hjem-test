@@ -100,7 +100,7 @@ public class RestController {
     public Mail sendMail(@RequestBody Mail mail){
         System.out.println(mail);
         MailService email = new MailService();
-        email.sendMail(mail.getMail());
+        email.sendMail(mail);
         return null;
     }
 
