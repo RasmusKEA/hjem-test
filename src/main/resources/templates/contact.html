@@ -24,7 +24,7 @@
 <body>
 
 <div class="container">
-    <div class="row">
+    <div class="contactContent">
         <div class="col-sm">
             <input type="text" id="name" name="name" placeholder="Indtast navn.." required>
 
@@ -34,9 +34,10 @@
 
             <input type="email" id="email" name="email" placeholder="Indtast email.." required>
 
+            <input type="text" id="subject" name="subject" placeholder="Hvad handler det om?" required>
+
             <textarea id="text" name="text" placeholder="Spørg os om noget" style="height:225px"></textarea>
             <button value="Send" onclick="sendMail()">send</button>
-
         </div>
     </div>
 </div>

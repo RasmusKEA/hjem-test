@@ -42,7 +42,7 @@ public class MailService {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccount));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(myAccount));
-            message.setSubject(mail.getName());
+            message.setSubject(mail.getSubject());
             message.setText("Hej,\n" + mail.getName() + " har kontaktet kundeservice. " + mail.getName() + " kan kontaktes på " + mail.getPhone() + " og " + mail.getMail() + " kunden skriver. \n" + mail.getText());
             return message;
         } catch (MessagingException e) {

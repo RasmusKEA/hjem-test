@@ -1,13 +1,16 @@
 package com.example.demo.model;
 
 public class Mail {
-    private String name, address, phone, mail, text;
+    private String name, address, phone, mail, subject, text;
+
+
 
     public Mail(String name, String address, String phone, String mail, String text) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.mail = mail;
+        this.subject = subject;
         this.text = text;
     }
 
@@ -45,6 +48,10 @@ public class Mail {
     public void setMail(String mail) {
         this.mail = mail;
     }
+
+    public String getSubject() { return subject; }
+
+    public void setSubject(String subject) { this.subject = subject; }
 
     public String getText() {
         return text;

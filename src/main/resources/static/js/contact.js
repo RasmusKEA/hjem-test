@@ -6,6 +6,7 @@ function sendMail() {
     let addr = document.getElementById("addr");
     let tlfnr = document.getElementById("tlfnr");
     let email = document.getElementById("email");
+    let subject = document.getElementById("subject")
     let text = document.getElementById("text");
 
     let newMail = {
@@ -13,6 +14,7 @@ function sendMail() {
         "address" : `${addr.value}`,
         "phone" : `${tlfnr.value}`,
         "mail" : `${email.value}`,
+        "subject" : `${subject.value}`,
         "text" : `${text.value}`
     }
     let body = JSON.stringify(newMail);
