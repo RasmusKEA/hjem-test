@@ -22,7 +22,8 @@ function featured(){
 
 
 
-function createEmployee() {
+function createEmployee(ev) {
+    ev.preventDefault();
     let name = document.getElementById("name");
     let username = document.getElementById("email");
     let password = document.getElementById("password");
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', init)
 
 function init(){
     document.getElementById('submitBtn').addEventListener('click', upload);
+    document.getElementById('createEmpBtn').addEventListener('click', createEmployee);
 }
 
 

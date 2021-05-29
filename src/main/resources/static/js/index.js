@@ -13,8 +13,8 @@ function fetchAllImages() {
 fetchAllImages();
 
 function loadImages(images){
-    images.forEach(image =>{
 
+    images.forEach(image =>{
         const featDiv = document.getElementById('featContainer');
         const singleFeatDiv = document.createElement('div')
         const imgTag = document.createElement('IMG');
