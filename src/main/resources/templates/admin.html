@@ -27,12 +27,10 @@
 
 <div class="button-div">
     <button class="btn btn-primary adminBtn" id="accountBtn"  onclick="account()">Tilføj konto</button>
-    <button class="btn btn-primary adminBtn" id="featuredBtn" onclick="featured()">Tilføj featured item</button>
-    <button class="btn btn-primary adminBtn" id="animationBtn" onclick="animation()">Tilføj animation</button>
+    <button class="btn btn-primary adminBtn" id="featuredBtn" onclick="featured()">Tilføj featured item/animation</button>
 </div>
 
 <div class="admin-content">
-
     <div class="accountForm" id="formthing">
         <form action="#">
             <div class="textOnInput">
@@ -66,8 +64,12 @@
             </div>
 
             <div class="linkDiv" >
-                <input style="width: 300px" type="text" placeholder="Indsæt link til item i shoppen..." class="linkInput">
+                <input style="width: 300px" type="text" id="shopLink" placeholder="Indsæt link til item i shoppen..." class="linkInput">
             </div>
+
+           <div class="itemNameDiv" >
+               <input style="width: 300px" type="text" id="itemName" placeholder="Indsæt navn på item..." class="linkInput">
+           </div>
 
             <select id="featNumber" class="form-select form-select-sm" style="width: 300px">
                 <option disabled selected>Hvilket featured item vil du erstatte?</option>

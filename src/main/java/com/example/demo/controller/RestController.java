@@ -9,7 +9,6 @@ import com.example.demo.service.DBFileStorageService;
 import com.example.demo.service.MailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -20,10 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
@@ -56,20 +52,14 @@ public class RestController {
 
 
     @PostMapping("/uploadFile")
-    public UploadFileResponse uploadFile(@RequestParam("featured_img") MultipartFile file, @RequestParam("featNumber") String featNumber) throws Exception {
+    public UploadFileResponse uploadFile(@RequestParam("featured_img") MultipartFile file, @RequestParam("featNumber") String featNumber, @RequestParam("shopLink") String shopLink, @RequestParam("itemName") String itemName) throws Exception {
 
-        DBFile dbFile = dbFileStorageService.storeFile(file, featNumber);
+        DBFile dbFile = dbFileStorageService.storeFile(file, featNumber, shopLink, itemName);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
                 .path(dbFile.getFeaturedID())
                 .toUriString();
-
-        DBFile file1 = dbFileRepository.findByFeaturedID(featNumber);
-        System.out.println(file1.getId());
-
-
-        System.out.println(fileDownloadUri);
 
         return new UploadFileResponse(dbFile.getFileName(), fileDownloadUri,
                 file.getContentType(), file.getSize(), Integer.parseInt(featNumber));
@@ -98,7 +88,6 @@ public class RestController {
 
     @PostMapping("/sendMail")
     public Mail sendMail(@RequestBody Mail mail){
-        System.out.println(mail);
         MailService email = new MailService();
         email.sendMail(mail);
         return null;

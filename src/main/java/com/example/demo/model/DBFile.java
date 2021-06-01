@@ -18,6 +18,10 @@ public class DBFile {
 
     private String fileType;
 
+    private String shopLink;
+
+    private String itemName;
+
     @Lob
     private byte[] data;
 
@@ -25,7 +29,9 @@ public class DBFile {
 
     }
 
-    public DBFile(String fileName, String fileType, byte[] data, String featuredID) {
+    public DBFile(String fileName, String fileType, byte[] data, String featuredID, String shopLink, String itemName) {
+        this.itemName = itemName;
+        this.shopLink = shopLink;
         this.featuredID = featuredID;
         this.fileName = fileName;
         this.fileType = fileType;
@@ -75,5 +81,21 @@ public class DBFile {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public String getShopLink() {
+        return shopLink;
+    }
+
+    public void setShopLink(String shopLink) {
+        this.shopLink = shopLink;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 }

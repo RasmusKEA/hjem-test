@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="css/bootstrap.css" rel="stylesheet"/>
     <link href="css/navbar.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
     <meta charset="UTF-8">
@@ -23,22 +26,36 @@
 </nav>
 <body>
 
-<div class="container">
-    <div class="contactContent">
-        <div class="col-sm">
-            <input type="text" id="name" name="name" placeholder="Indtast navn.." required>
+<div class="contact-content">
+    <div class="contactForm" id="contactForm">
+        <form action="#">
+            <div class="textOnInput">
+                <label>Navn</label>
+                <input class="form-control" type="text" id="name" required="required"/>
+            </div>
 
-            <input type="text" id="addr" name="addr" placeholder="Indtast adresse.." required>
+            <div class="textOnInput">
+                <label>Tlf nr</label>
+                <input class="form-control" type="text" id="tlfnr" name="tlfnr" required>
+            </div>
 
-            <input type="text" id="tlfnr" name="tlfnr" placeholder="Indtast telefonnummer.." required>
+            <div class="textOnInput">
+                <label>Email</label>
+                <input class="form-control" type="email" id="email" name="email" required>
+            </div>
 
-            <input type="email" id="email" name="email" placeholder="Indtast email.." required>
+            <div class="textOnInput">
+                <label>Emne</label>
+                <input class="form-control" type="text" id="subject" name="subject" required>
+            </div>
 
-            <input type="text" id="subject" name="subject" placeholder="Hvad handler det om?" required>
-
-            <textarea id="text" name="text" placeholder="Spørg os om noget" style="height:225px"></textarea>
-            <button value="Send" onclick="sendMail()">send</button>
-        </div>
+            <div class="textOnInput">
+                <label>Besked</label>
+                <textarea class="form-control" id="text" name="text" style="height:225px"></textarea>
+            </div>
+            <button class="btn btn-primary createAccount" id="createEmpBtn" value="Send">Send
+            </button>
+        </form>
     </div>
 </div>
 

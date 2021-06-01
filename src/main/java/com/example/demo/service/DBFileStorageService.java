@@ -14,7 +14,7 @@ public class DBFileStorageService {
     @Autowired
     private DBFileRepository dbFileRepository;
 
-    public DBFile storeFile(MultipartFile file, String featNumber) throws Exception {
+    public DBFile storeFile(MultipartFile file, String featNumber, String shopLink, String itemName) throws Exception {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -24,7 +24,7 @@ public class DBFileStorageService {
                 throw new IOException("Sorry! Filename contains invalid path sequence " + fileName);
             }
 
-            DBFile dbFile = new DBFile(fileName, file.getContentType(), file.getBytes(), featNumber);
+            DBFile dbFile = new DBFile(fileName, file.getContentType(), file.getBytes(), featNumber, shopLink, itemName);
 
             try{
                 DBFile featExists = dbFileRepository.findByFeaturedID(featNumber);

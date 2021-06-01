@@ -5,7 +5,7 @@ public class Mail {
 
 
 
-    public Mail(String name, String address, String phone, String mail, String text) {
+    public Mail(String name, String address, String phone, String mail, String text, String subject) {
         this.name = name;
         this.address = address;
         this.phone = phone;

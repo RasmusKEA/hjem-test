@@ -19,21 +19,21 @@ function loadImages(images){
         const singleFeatDiv = document.createElement('div')
         const imgTag = document.createElement('IMG');
         singleFeatDiv.className = 'featured-item';
-        imgTag.setAttribute('src', 'http://localhost:8080/downloadFile/' + `${image.featuredID}`);
-        imgTag.style.width = '200px';
-        imgTag.style.height = '300px';
-        singleFeatDiv.append(imgTag);
-        featDiv.append(singleFeatDiv);
 
         if (image.featuredID !== '5'){
-            const featDiv = document.getElementById('featContainer');
-            const singleFeatDiv = document.createElement('div')
-            const imgTag = document.createElement('IMG');
-            singleFeatDiv.className = 'featured-item';
+            const aTag = document.createElement('a')
+            aTag.href = image.shopLink;
+
+            const itemName = document.createElement('span')
+            itemName.innerText = image.itemName;
+            itemName.className = "itemName";
+
             imgTag.setAttribute('src', 'http://localhost:8080/downloadFile/' + `${image.featuredID}`);
             imgTag.style.width = '200px';
             imgTag.style.height = '300px';
-            singleFeatDiv.append(imgTag);
+            aTag.append(imgTag)
+            singleFeatDiv.append(aTag);
+            singleFeatDiv.append(itemName)
             featDiv.append(singleFeatDiv);
         }else {
             const animationContainer = document.getElementById('animationContainer');
