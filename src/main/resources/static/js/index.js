@@ -24,7 +24,7 @@ function loadImages(images){
             const aTag = document.createElement('a')
             aTag.href = image.shopLink;
 
-            const itemName = document.createElement('span')
+            const itemName = document.createElement('p')
             itemName.innerText = image.itemName;
             itemName.className = "itemName";
 
