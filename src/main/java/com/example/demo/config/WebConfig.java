@@ -38,7 +38,6 @@ public class WebConfig implements WebMvcConfigurer {
             registry.addResourceHandler("/**").addResourceLocations(
                     CLASSPATH_RESOURCE_LOCATIONS);
         }
-
     }
 
     @Override

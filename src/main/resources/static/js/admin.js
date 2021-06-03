@@ -32,8 +32,8 @@ function createEmployee(ev) {
         };
 
         let body = JSON.stringify(newEmployee);
-
-        const URL = "http://localhost:8080/createEmployee";
+        //Port 9090 er til "backend" port 8080 til frontend.
+        const URL = "http://34.237.223.97:9090/createEmployee";
 
         const postObject = {
             headers: {
@@ -91,7 +91,7 @@ function upload(ev){
     if(document.getElementById("featured_img").files.length === 0 || featElem.value === "" || shopLink === "" || itemName === ""){
         window.alert("Udfyld venligst alle felter")
     }else{
-        let req = new Request('http://localhost:8080/uploadFile', {
+        let req = new Request('http://34.237.223.97:9090/uploadFile', {
             method: 'POST',
             headers: h,
             mode: 'no-cors',

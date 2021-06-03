@@ -5,7 +5,8 @@ const requestObject = {
 }
 
 function fetchAllImages() {
-    fetch('http://localhost:8080/findAllImages', requestObject)
+    //Port 9090 er til "backend" port 8080 til frontend.
+    fetch('http://34.237.223.97:9090/findAllImages', requestObject)
         .then(response => response.json())
         .then(images => loadImages(images));
 }
@@ -28,7 +29,7 @@ function loadImages(images){
             itemName.innerText = image.itemName;
             itemName.className = "itemName";
 
-            imgTag.setAttribute('src', 'http://localhost:8080/downloadFile/' + `${image.featuredID}`);
+            imgTag.setAttribute('src', 'http://34.237.223.97:9090/downloadFile/' + `${image.featuredID}`);
             imgTag.style.width = '200px';
             imgTag.style.height = '300px';
             aTag.append(imgTag)
@@ -40,7 +41,7 @@ function loadImages(images){
             const animationDiv = document.createElement('div');
             const animation = document.createElement('IMG');
             animationDiv.className = 'animationDiv';
-            animation.setAttribute('src', 'http://localhost:8080/downloadFile/5');
+            animation.setAttribute('src', 'http://34.237.223.97:9090/downloadFile/5');
             animationDiv.append(animation);
             animationContainer.append(animationDiv);
         }

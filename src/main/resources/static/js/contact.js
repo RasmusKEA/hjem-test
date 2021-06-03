@@ -34,7 +34,8 @@ function sendMail(ev) {
             credentials: "include"
         };
 
-        const URL = "http://localhost:8080/sendMail";
+        //Port 9090 er til "backend" port 8080 til frontend.
+        const URL = "http://34.237.223.97:9090/sendMail";
 
         fetch(URL, postObject)
             .then(response => response.json())

@@ -9,7 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-@RequiredArgsConstructor
+/*@RequiredArgsConstructor
 @Component
 public class InitUsers implements CommandLineRunner {
     private final AuthorityRepository authorityRepository;
@@ -27,4 +27,4 @@ public class InitUsers implements CommandLineRunner {
         employeeRepository.save(Employee.builder().username("emil").password(passwordEncoder.encode("helholm")).authority(admin).build());
 
     }
-}
+}*/
